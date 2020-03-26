@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
+import { FeatureFlagStoreData } from 'common/types/store-data/feature-flag-store-data';
 import { DetailsViewActionMessageCreator } from 'DetailsView/actions/details-view-action-message-creator';
 import { escape } from 'lodash';
 import { ActionButton } from 'office-ui-fabric-react';
@@ -21,6 +22,7 @@ export interface ReportExportComponentProps {
     htmlGenerator: (descriptionPlaceholder: string) => string;
     updatePersistedDescription: (value: string) => void;
     getExportDescription: () => string;
+    featureFlagStoreData: FeatureFlagStoreData;
 }
 
 export interface ReportExportComponentState {
@@ -85,6 +87,7 @@ export class ReportExportComponent extends React.Component<
                     onDescriptionChange={this.onExportDescriptionChange}
                     exportResultsType={exportResultsType}
                     onExportClick={this.generateHtml}
+                    featureFlagStoreData={this.props.featureFlagStoreData}
                 />
             </>
         );
